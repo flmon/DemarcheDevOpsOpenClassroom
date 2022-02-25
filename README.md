@@ -5,7 +5,7 @@
 
 Il utilise Gitlab (https://gitlab.com/users/sign_in)
 
-###Section A: planification du developpement
+### Section A: planification du developpement
 
 - Creez un nouveau projet dan Gitlab (https://gitlab.com/flmon/spring-petclinic-microservices)
 - Aller sur Project Information, Labels
@@ -25,7 +25,7 @@ Il utilise Gitlab (https://gitlab.com/users/sign_in)
 - Sur l'issue user story, on peut modifier des parametres pour lier la milestone (sprint), assigner qqn, 
     faire du time tracking (avec spend/estimate : /spend 2d   /estimate 1w)
 
-###Section B: integration continue
+### Section B: integration continue
 
 - Clonez projet petclinic sur poste local (https://github.com/spring-petclinic/spring-petclinic-microservices.git)
   creer projet à partir de version control (https://gitlab.com/flmon/spring-petclinic-microservices.git)
@@ -39,3 +39,9 @@ Il utilise Gitlab (https://gitlab.com/users/sign_in)
   push code to gitlab => on peut voir un pipeline qui echoue avec l'erreur de build
 - Dans un cas reel, on va sur le pipeline en erreur pour voir le detail du probleme et ainsi creer une issue associee
  (label bug, milestone sprint 1) en explicitant le probleme
+- L'issue apparait dans la colonne Open sur le board Development; on peut la deplacer vers Doing
+- Creer une merge request (committer changements de (nouvelle) branche vers branche master)
+ remplir champs (assignee, milestone, description avec Closes #4  pour indiquer l'issue 4 associee)
+- Corriger le bug, commit et push sur nouvelle branche => un pipeline de build se lance
+- On peut alors merger (si pipeline OK) => les changements sur nouvelle branche sont sur master et un
+ pipeline se lance encore; Sur board Development, on voit que l'issue 'bug' est automatiquement 'Closed'
