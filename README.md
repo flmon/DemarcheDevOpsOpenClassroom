@@ -1,13 +1,13 @@
 # DemarcheDevOpsOpenClassroom
 
-- Le cours Openclassroom se trouve à l'adresse
+- Le cours Openclassroom (OC) se trouve à l'adresse
    https://openclassrooms.com/fr/courses/2035736-mettez-en-place-lintegration-et-la-livraison-continues-avec-la-demarche-devops/6182806-planifiez-votre-developpement
 
 Il utilise Gitlab (https://gitlab.com/users/sign_in)
 
-Section A: planification du developpement
+###Section A: planification du developpement
 
-- Creez un nouveau projet dan Gitlab 
+- Creez un nouveau projet dan Gitlab (https://gitlab.com/flmon/spring-petclinic-microservices)
 - Aller sur Project Information, Labels
 - Creer Labels To Do et Doing ainsi que d'autres t.q Epic,
    User story...
@@ -24,3 +24,18 @@ Section A: planification du developpement
 - Creer un Milestone (qui symbolisera un sprint)
 - Sur l'issue user story, on peut modifier des parametres pour lier la milestone (sprint), assigner qqn, 
     faire du time tracking (avec spend/estimate : /spend 2d   /estimate 1w)
+
+###Section B: integration continue
+
+- Clonez projet petclinic sur poste local (https://github.com/spring-petclinic/spring-petclinic-microservices.git)
+  creer projet à partir de version control (https://gitlab.com/flmon/spring-petclinic-microservices.git)
+  ajouter code petclinic (et push sur gitlab)
+  la page du projet montre tous les nouveaux fichiers
+- activer CI/CD sur gitlab (set up CI/CD sur page d'accueil projet); cela cree un fichier gitlab-ci.yml (avec contenu par défaut)
+- On peut tester le pipeline (CI/CD, Pipelines, run pipeline)
+- Mettre à jour le fichier gitlab-ci.yml avec donnees de OC => le pipeline fails !! (Permission denied for maven)
+- Donner droit exec a mvnw (dans build et dans test)  (voir fichier gitlab-ci.yml dans gitlab) => le pipeline passe (OK)
+- Pour tester le build avec une erreur, creer une branche git et introduire une erreur dans un .java
+  push code to gitlab => on peut voir un pipeline qui echoue avec l'erreur de build
+- Dans un cas reel, on va sur le pipeline en erreur pour voir le detail du probleme et ainsi creer une issue associee
+ (label bug, milestone sprint 1) en explicitant le probleme
