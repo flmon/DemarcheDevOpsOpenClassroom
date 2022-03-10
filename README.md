@@ -45,14 +45,15 @@ Il utilise Gitlab (https://gitlab.com/users/sign_in)
 - Corriger le bug, commit et push sur nouvelle branche => un pipeline de build se lance
 - On peut alors merger (si pipeline OK) => les changements sur nouvelle branche sont sur master et un
  pipeline se lance encore; Sur board Development, on voit que l'issue 'bug' est automatiquement 'Closed'
-  - On peut mesurer la qualite du code ==> modif gitlab-ci.yml pour ajout d'un job de code quality control
-      on peut faire creer un artifact de resultat de code quality. Lorsque le pipeline execute ce job, il genere
-      un artifact (telechargeable) qui est un html de resultat (Remarque: le job est marque 'allowed to fail' et donc un job 
-      suivant pourra s'executer meme si quality control fail')
-- On peut aussi ajouter un job de deploiement
+- On peut mesurer la qualite du code ==> modif gitlab-ci.yml pour ajout d'un job de code quality control
+    on peut faire creer un artifact de resultat de code quality. Lorsque le pipeline execute ce job, il genere
+    un artifact (telechargeable) qui est un html de resultat (Remarque: le job est marque 'allowed to fail' et donc un job 
+    suivant pourra s'executer meme si quality control 'fail')
+- On peut aussi ajouter un job de packaging (cependant ce job echoue)
 
 ### Section C: livraison continue
 
 - Si on modifie les pom.xml (pour changer version) et modifie le Dockerfile (pour changer l'image utilisee) et que l'on commit,
-    un pipeline se lance automatiquement et tous les jobs devraient se relancer. Sauf que le buld job echoue et fait stopper
-    le pipeline.
+    un pipeline se lance automatiquement et tous les jobs devraient se relancer. Sauf que le build job echoue et fait stopper
+    le pipeline.  => retour au pom.xml precedent
+    Toutefois le package job echoue toujours
